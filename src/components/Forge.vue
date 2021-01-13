@@ -1,5 +1,7 @@
 <template>
-    <div class="w-full h-full" id="forge-viewer"></div>
+    <div class="relative">
+        <div class="w-full h-full" id="forge-viewer"></div>
+    </div>
 </template>
 
 <script>
@@ -20,7 +22,7 @@ export default {
                 api: 'derivativeV2', // for models uploaded to EMEA change this option to 'derivativeV2_EU'
                 getAccessToken: async function (onTokenReady) {
                     var token =
-                        'eyJhbGciOiJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJzY29wZSI6WyJkYXRhOnJlYWQiLCJkYXRhOndyaXRlIiwiZGF0YTpjcmVhdGUiLCJidWNrZXQ6Y3JlYXRlIiwiYnVja2V0OnVwZGF0ZSIsImJ1Y2tldDpyZWFkIl0sImNsaWVudF9pZCI6IjNIRzBwQWNmTXBCd0hRMjB0M29HN0RpbnhQTDB3Nm1HIiwiYXVkIjoiaHR0cHM6Ly9hdXRvZGVzay5jb20vYXVkL2p3dGV4cDYwIiwianRpIjoiQlR3M1BFZjNYZVltT0tCTVZCNjFxaWd4NTIya1ZYQTd4dnhYSkpSR3owUkw1YzBvWWVmNDRwZEt4dExqSGcwRyIsImV4cCI6MTYwODU1MDU0NX0.T6-dr9EhPU-IxTOY9Hvy1TW2Z6EHOcqudIay6QM3Kfw';
+                        'eyJhbGciOiJIUzI1NiIsImtpZCI6Imp3dF9zeW1tZXRyaWNfa2V5In0.eyJzY29wZSI6WyJjb2RlOmFsbCIsImRhdGE6d3JpdGUiLCJkYXRhOnJlYWQiLCJidWNrZXQ6Y3JlYXRlIiwiYnVja2V0OmRlbGV0ZSIsImJ1Y2tldDpyZWFkIl0sImNsaWVudF9pZCI6IjNIRzBwQWNmTXBCd0hRMjB0M29HN0RpbnhQTDB3Nm1HIiwiYXVkIjoiaHR0cHM6Ly9hdXRvZGVzay5jb20vYXVkL2p3dGV4cDYwIiwianRpIjoiMHdFMlhEZ0E2NXowck16bE55a3NYR2hWVzBCcVQzWHloUU5lTExzeGlLa296SXA3MGxaMFcyZWwwNERoR2hteiIsImV4cCI6MTYxMDUzMTk4N30.btOMBNkuXU03qU1yFW_8Qf6XkupPDjED0OZNZ-av1zM';
                     var timeInSeconds = 3600; // Use value provided by Forge Authentication (OAuth) API
                     await onTokenReady(token, timeInSeconds);
                 },
@@ -30,7 +32,7 @@ export default {
                 var htmlDiv = document.getElementById('forge-viewer');
                 viewer = new window.Autodesk.Viewing.GuiViewer3D(htmlDiv);
                 var documentId =
-                    'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIwLTEyLTIxLTEwLTM1LTUzLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL1NlYXQuZHdm';
+                    'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6ZWRpc29uX2J1Y2tldC9uZXdfYm94LmlwdA';
                 window.Autodesk.Viewing.Document.load(
                     documentId,
                     viewerDocument => {
@@ -40,13 +42,13 @@ export default {
                     this.onDocumentLoadFailure
                 );
                 var startedCode = viewer.start();
-                const model = viewer.model;
-                console.log(viewer.impl.getRenderProxy(model, 'ADN-200019'));
+                // const model = viewer.model;
+                // console.log(viewer.impl.getRenderProxy(model, 'ADN-200019'));
                 if (startedCode > 0) {
                     console.error('Failed to create a Viewer: WebGL not supported.');
                     return;
                 }
-                console.log('Initialization complete, loading a model next...');
+                // console.log('Initialization complete, loading a model next...');
             });
         },
     },

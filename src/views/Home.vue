@@ -1,10 +1,7 @@
 <template>
     <div class="home p-4">
-        <img alt="Vue logo" src="../assets/logo.png" />
-        <div class="">
-            <button class="p-4">A</button>
-            <button class="p-4">B</button>
-            <Forge />
+        <div class="p-4 flex justify-center">
+            <Forge class="w-3/4 h-80vh" />
         </div>
     </div>
 </template>
